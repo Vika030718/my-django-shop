@@ -1,1 +1,1 @@
-web: gunicorn iron-man-shop.wsgi --log-file -
+web: gunicorn runp-heroku:app
