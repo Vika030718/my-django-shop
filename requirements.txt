@@ -4,9 +4,11 @@ certifi==2018.4.16
 chardet==3.0.4
 decorator==4.3.0
 defusedxml==0.5.0
+dj-database-url==0.5.0
 Django==1.11
 django-allauth==0.36.0
 django-bootstrap-datepicker-plus==3.0.4
+gunicorn==19.9.0
 idna==2.7
 ipdb==0.11
 ipython==6.4.0
@@ -20,6 +22,7 @@ parso==0.3.1
 pexpect==4.6.0
 pickleshare==0.7.4
 prompt-toolkit==1.0.15
+psycopg2==2.7.2
 psycopg2-binary==2.7.5
 ptyprocess==0.6.0
 Pygments==2.2.0
