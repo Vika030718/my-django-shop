@@ -1,0 +1,13 @@
+{% extends "shop/base.html" %}
+{% block content %}
+<div class="product">
+    <span class="product__category">Category: {{product.category.name}}</span>
+    <div class="product__image">
+        <img src="{{product.image}}" alt="{{product.name}}">
+    </div>
+    <h2 class="product__title">{{product.name}}</h2>
+    <p class="product__brand">made by: {{product.brand}}</p>
+    <p class="product__date">posted at: {{product.pub_date}}</p>
+    <p class="product__price">{{product.price}}$</p>
+</div>
+{% endblock %}

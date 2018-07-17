@@ -1,0 +1,27 @@
+{% extends "shop/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="title">{{category.name}}</h1>
+    </div>
+    <div class="col-md-3">
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <form action="{% url 'search' category.id %}" method="get">
+                {% csrf_token %}
+                {{ form.as_table }}
+                <div>
+                    <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-10">
+                </div>
+            </form>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            {% for product in products_list %}
+            <div class="col-md-3">
+                <div>{% include "shop/product-small-block.html" %}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
