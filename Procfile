@@ -1,1 +1,1 @@
-web: gunicorn my-django-shop.wsgi --log-file -
+web: gunicorn iron-man-shop.wsgi --log-file -
