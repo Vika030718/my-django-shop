@@ -1,9 +1,9 @@
 <div class="product-item">
     <span class="product-item__category">Category: {{product.category.name}}</span>
     <div class="product-item__image">
-        <img src="{{product.image}}" alt="{{product.name}}">
+        <a href="{% url 'product' product.id %}"><img src="{{product.image}}" alt="{{product.name}}"></a>
     </div>
-    <h2 class="product-item__title"><a  href="{% url 'product' product.id %}">{{product.name}}</a></h2>
+    <a  href="{% url 'product' product.id %}"><div class="product-item__title">{{product.name}}</div></a>
     <p class="product-item__brand">made by: {{product.brand}}</p>
     <p class="product-item__date">posted at: {{product.pub_date}}</p>
     <p class="product-item__price">{{product.price}}$</p>

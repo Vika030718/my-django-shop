@@ -8,7 +8,7 @@ from .models import Product, Category
 
 
 def index(request):
-    latest_product_list = Product.objects.order_by('-pub_date')[:5]
+    latest_product_list = Product.objects.order_by('-pub_date')[:8]
     context = {'latest_product_list': latest_product_list}
     return render(request, 'shop/index.html', context)
 
@@ -70,3 +70,8 @@ def search(request, category_id):
                'form': form,}
 
     return render(request, 'shop/category.html', context)
+
+def favorites(request):
+    products_list = Product.objects.filter(category=1)
+    context = {'products_list': products_list}
+    return render(request, 'shop/favorites.html', context)

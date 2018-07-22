@@ -55,12 +55,23 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     # My apps:
     'shop',
     'bootstrap_datepicker_plus',
 ]
 
-SITE_ID = 1
+SITE_ID = 2
+
+LOGIN_REDIRECT_URL = '/'
+
+ACCOUNT_EMAIL_REQUIRED=True
+
+SOCIALACCOUNT_PROVIDERS = { 'google':
+                             { 'SCOPE': ['email'],
+                               'AUTH_PARAMS': { 'access_type': 'online' }
+                             }
+                          }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

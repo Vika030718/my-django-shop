@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load socialaccount %}
+
 <html>
 
 <head>
@@ -30,6 +32,16 @@
                     </li>
                     {% endfor %}
 
+                </ul>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'favorites' %}">My favorites </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}"> Logout from {{user.last_name}}</a></li>
+                    {% else  %}
+                        <li class="nav-item"> <span class="nav-text">Login with:</span> </li>
+                        <li class="nav-item"><a class="nav-link" href="{% provider_login_url "facebook" method="oauth2" %}">Facebook </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% provider_login_url "google" method="oauth2" %}">Google </a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
