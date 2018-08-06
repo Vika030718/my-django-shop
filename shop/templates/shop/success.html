@@ -1,0 +1,7 @@
+{% extends "shop/base.html" %}
+{% block content %}
+    <div class="success-page">
+        <div class="success-page__massage alert alert-success">{{message}}</div>
+        <a class=""  href="{% url 'index' %}">Return to main page</a>
+    </div>
+{% endblock %}

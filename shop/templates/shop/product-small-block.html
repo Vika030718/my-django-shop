@@ -1,4 +1,17 @@
 <div class="product-item">
+
+    {% if product.user_set.all  %}
+        {% for owner in  product.user_set.all %}
+            {% if owner.username == user.username  %}
+                <a href="{% url 'remove_from_favorites' product.id %}" class="favorite-btn" method="post"><i class="fas fa-star"></i></a>
+            {% else %}
+                <a href="{% url 'add_to_favorites' product.id %}" class="favorite-btn" method="post"><i class="far fa-star"></i></a>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <a href="{% url 'add_to_favorites' product.id %}" class="favorite-btn" method="post"><i class="far fa-star"></i></a>
+    {% endif %}
+
     <span class="product-item__category">Category: {{product.category.name}}</span>
     <div class="product-item__image">
         <a href="{% url 'product' product.id %}"><img src="{{product.image}}" alt="{{product.name}}"></a>
@@ -7,4 +20,5 @@
     <p class="product-item__brand">made by: {{product.brand}}</p>
     <p class="product-item__date">posted at: {{product.pub_date}}</p>
     <p class="product-item__price">{{product.price}}$</p>
+
 </div>

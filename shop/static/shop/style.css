@@ -54,6 +54,7 @@ form{
     border: 1px solid #cccccc;
     padding: 20px;
     margin-bottom: 30px;
+    position: relative;
 }
 .product-item__date{
     font-size: 14px;
@@ -133,4 +134,24 @@ form{
     font-size: 20px;
     margin-bottom: 0;
     font-weight: bold;
+}
+.favorite-btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 30px;
+    color: #5e4bb0;
+}
+.success-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.success-page__massage{
+    margin-bottom: 20px;
+}
+.alert-wrapper{
+    text-align: center;
+    width: 100%;
 }

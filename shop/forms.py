@@ -6,7 +6,7 @@ class SearchForm(forms.Form):
                                    label='',
                                    required=False,
                                    widget=forms.TextInput(attrs={'placeholder': 'Product name',
-                                                                'class': 'form-control'}),)
+                                                                 'class': 'form-control'}),)
     product_price_start = forms.IntegerField(label='Price',
                                              required=False,
                                              widget=forms.NumberInput(attrs={'placeholder': 'From',

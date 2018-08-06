@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
-import django_heroku
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,6 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# django-allauth
 
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -39,6 +40,17 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+AUTH_USER_MODEL = 'shop.User'
+
+SITE_ID = 2
+
+LOGIN_REDIRECT_URL = '/'
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+SOCIALACCOUNT_PROVIDERS = {'google':
+                           {'SCOPE': ['email'], 'AUTH_PARAMS': {'access_type': 'online'}}
+                          }
 
 # Application definition
 
@@ -60,18 +72,6 @@ INSTALLED_APPS = [
     'shop',
     'bootstrap_datepicker_plus',
 ]
-
-SITE_ID = 2
-
-LOGIN_REDIRECT_URL = '/'
-
-ACCOUNT_EMAIL_REQUIRED=True
-
-SOCIALACCOUNT_PROVIDERS = { 'google':
-                             { 'SCOPE': ['email'],
-                               'AUTH_PARAMS': { 'access_type': 'online' }
-                             }
-                          }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -97,6 +97,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'shop.context_processors.menu',
+                # django-allauth
                 'django.template.context_processors.request',
             ],
         },
@@ -104,7 +105,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'my_django_shop.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
@@ -119,7 +119,6 @@ DATABASES = {
         'PORT' : '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -139,7 +138,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -153,7 +151,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
@@ -165,4 +162,14 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
+# heroku settings
+
 django_heroku.settings(locals())
+
+# mail settings
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '2f6cffcdf008b4'
+EMAIL_HOST_PASSWORD = 'ab73410bfa29a3'
+EMAIL_PORT = '2525'

@@ -6,13 +6,20 @@
 <head>
     <title>My shop</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="{% static 'shop/style.css' %}" />
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <script src="{% static 'shop/js/app.js' %}"></script>
+
     {% block extrahead %}       {# Extra Resources Start #}
     {{ form.media }}            {# Form required JS and CSS #}
     {% endblock %}              {# Extra Resources End #}
+
 </head>
 
 <body>
@@ -36,12 +43,13 @@
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'favorites' %}">My favorites </a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}"> Logout from {{user.last_name}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}"> Logout from {{user.username}}</a></li>
                     {% else  %}
                         <li class="nav-item"> <span class="nav-text">Login with:</span> </li>
                         <li class="nav-item"><a class="nav-link" href="{% provider_login_url "facebook" method="oauth2" %}">Facebook </a></li>
                         <li class="nav-item"><a class="nav-link" href="{% provider_login_url "google" method="oauth2" %}">Google </a></li>
                     {% endif %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'send_email' %}">Call me </a></li>
                 </ul>
             </div>
         </nav>

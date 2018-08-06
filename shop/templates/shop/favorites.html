@@ -3,10 +3,17 @@
 <h1 class="title">My favorites products</h1>
 <div class="row">
 
-        {% for product in products_list %}
-            <div class="col-md-3">
-                <div>{% include "shop/product-small-block.html" %}</div>
+        {% if products_list %}
+            {% for product in products_list %}
+                <div class="col-md-3">
+                    <div>{% include "shop/product-small-block.html" %}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert-wrapper">
+                <span class="alert alert-info">You have no favorite products yet</span>
             </div>
-        {% endfor %}
+
+        {% endif %}
 </div>
 {% endblock %}
