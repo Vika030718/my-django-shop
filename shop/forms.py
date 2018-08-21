@@ -22,3 +22,10 @@ class SearchForm(forms.Form):
                                                                   'class': 'form-control'}),)
     pub_date = forms.DateField(widget=DatePickerInput(format='YYYY-MM-DD'),
                                required=False)
+
+class CallMe(forms.Form):
+    phone_number = forms.CharField(max_length=100,
+                                   label='',
+                                   required=True,
+                                   widget=forms.TextInput(attrs={'placeholder': 'Enter your phone',
+                                                                 'class': 'form-control'}),)

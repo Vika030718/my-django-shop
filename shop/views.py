@@ -10,6 +10,7 @@ def index(request):
     context = {'latest_product_list': latest_product_list}
     return render(request, 'shop/index.html', context)
 
+
 def product(request, product_id):
     try:
         product = Product.objects.get(id=product_id)
@@ -17,6 +18,7 @@ def product(request, product_id):
         raise Http404("we don't have such an item:(")
     context = {'product': product}
     return render(request, 'shop/product.html', context)
+
 
 def category(request, category_id):
     try:
@@ -31,6 +33,7 @@ def category(request, category_id):
                'brands': brands,
                'form':form,}
     return render(request, 'shop/category.html', context)
+
 
 def search(request, category_id):
     try:
@@ -62,11 +65,13 @@ def search(request, category_id):
                'form': form,}
     return render(request, 'shop/category.html', context)
 
+
 def favorites(request):
     user = request.user
     products_list = user.favorite_products.all()
     context = {'products_list': products_list}
     return render(request, 'shop/favorites.html', context)
+
 
 def add_to_favorites(request, product_id):
     user = request.user
@@ -74,6 +79,7 @@ def add_to_favorites(request, product_id):
     message = "The product has been successfully added to favorites"
     context = {'message': message}
     return render(request, 'shop/success.html', context)
+
 
 def remove_from_favorites(request, product_id):
     user = request.user
@@ -83,12 +89,17 @@ def remove_from_favorites(request, product_id):
     return render(request, 'shop/success.html', context)
     # return HttpResponseRedirect(reverse('favorites'))
 
+
 def send_email(request):
+    client_phone = request.GET['phone_number']
+    message_to_send = 'Call to this number: {}'.format(client_phone)
     send_mail('Subject here',
-              'Here is the message.',
+              message_to_send,
               'vika030718@gmail.com',
               ['vika030718@gmail.com'],
               fail_silently=False)
     message = "Your mail has been sent successfully"
     context = {'message': message}
+
+
     return render(request, 'shop/success.html', context)
