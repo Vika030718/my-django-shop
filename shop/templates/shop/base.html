@@ -40,7 +40,7 @@
                     <form action="{% url 'send_email' %}" method="get">
                         {% csrf_token %}
                         {{ send_email_form.as_table }}
-                        <div class="modal-footer">
+                        <div class="text-right">
                             <input type="submit" value="Call me" class="btn btn-outline-success my-2 my-sm-10">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
