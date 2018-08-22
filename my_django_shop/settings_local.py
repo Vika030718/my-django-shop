@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import django_heroku
-from .settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
